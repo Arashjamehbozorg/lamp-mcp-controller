@@ -141,7 +141,7 @@ async def call_tool(name: str, arguments: dict) -> list[TextContent]:
                 )]
             
             # Check whether lamp supports brightness control
-            if not(hasattr(lamp, "modules") and "Light" in lamp.modules()):
+            if not(hasattr(lamp, "modules") and "Light" in lamp.modules):
                 return[TextContent(
                     type="text",
                     text="Error: The lamp does not support brightness adjustment."
@@ -152,7 +152,7 @@ async def call_tool(name: str, arguments: dict) -> list[TextContent]:
 
             return[TextContent(
                 type="text",
-                text="Lamp {lamp_name} brightness got set to {brightness}."
+                text=f"Lamp {lamp_name} brightness got set to {brightness}."
             )]
         elif name == "get_lamp_status":
             await lamp.update()
